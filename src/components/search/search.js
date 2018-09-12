@@ -8,16 +8,14 @@ export default class SearchInput extends React.PureComponent{
         this.state = {
             show:false,
             value:"",
-            hintArray:[]
+            hintArray:[],
+            answer:""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(e){
-        this.setState({
-            hintArray:[]
-        })
         const value = e.target.value;
         let show ;
         let arr = [];
@@ -27,7 +25,14 @@ export default class SearchInput extends React.PureComponent{
                 method:"POST",
                 mode: "no-cors"
             }).then((res)=>{
-                arr = [1,2,3,4,5,6,7,8,9,90,0,1,2,3,4,34,23,423,4,324,23,423,4,23,423,4,32,423,4,23,423,423,4,23,423,4]
+                arr = [
+                    {name:"倚天屠龙记",answer:"fshakhfksda\/nhkfhsdakfhkadshfksahkdf"},
+                    {name:"倚天屠龙记",answer:"fshakhfksdahkfhsdakfhkadshfksahkdf"},
+                    {name:"倚天屠龙记",answer:"fshakhfksdahkfhsdakfhkadshfksahkdf"},
+                    {name:"倚天屠龙记",answer:"fshakhfksdahkfhsdakfhkadshfksahkdf"},
+                    {name:"倚天屠龙记",answer:"fshakhfksdahkfhsdakfhkadshfksahkdf"},
+                    {name:"倚天屠龙记",answer:"fshakhfksdahkfhsdakfhkadshfksahkdf"}
+                ]
                 this.setState({
                     hintArray:arr
                 })
@@ -35,10 +40,6 @@ export default class SearchInput extends React.PureComponent{
         }else{
             show = false;
         }
-        
-       
-
-
         this.setState({
             show,
             value
@@ -47,23 +48,25 @@ export default class SearchInput extends React.PureComponent{
 
     handleClick(e){
         const obj = e.target;
+        const idx =  obj.getAttribute("idx")
+        const {answer} = this.state.hintArray[idx]
         this.setState({
             value:obj.getAttribute("val"),
-            show:false
+            show:false,
+            answer
         })
     }
 
     render(){
         const style = className(styles.box_border,styles.box,this.state.show?styles.show:styles.hidden);
         const list = this.state.hintArray.map((val,index)=>{
-            return <li key={index} onClick={this.handleClick} val={val}>名称：{val}</li>
+            return <li key={index} onClick={this.handleClick} val={val.name} idx={index}>名称：{val.name}</li>
         })
         return (
             <div className={styles.container}>
                 <div className={styles.box}>
-                    <input value={this.state.value} onChange={this.handleChange} className={styles.input} placeholder="输入关键字，比如怪物、装备以及想问的问题"/>
+                    <input maxLength="20" value={this.state.value} onChange={this.handleChange} className={styles.input} placeholder="输入关键字，比如怪物、装备以及想问的问题"/>
                     <button className={styles.search}>搜 索</button>
-                   
                 </div>
                 <div className={style} >
                     <div className={styles.hint}>
@@ -72,8 +75,8 @@ export default class SearchInput extends React.PureComponent{
                         </ul>
                     </div>
                 </div>
-                <div className={styles.box}>
-                    123123123123
+                <div className={styles.answer}>
+                    {this.state.answer}
                 </div>
             </div>
         )
