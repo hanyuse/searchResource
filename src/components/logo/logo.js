@@ -1,5 +1,5 @@
 import React from "react";
-
+import css from "./logo.css"
 /**
  * logo图片
  */
@@ -9,6 +9,6 @@ export default class Logo extends React.PureComponent{
     }
 
     render(){
-        return <img src={this.props.src}/>
+        return <img className={css.img} src={this.props.src}/>
     }
 }

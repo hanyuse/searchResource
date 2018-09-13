@@ -1,0 +1,9 @@
+.search{
+    height:100%;
+    flex: 1 0 auto;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    outline: medium;
+    padding-left: 10px;
+    padding-right: 10px;
+}

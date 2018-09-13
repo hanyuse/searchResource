@@ -1,0 +1,11 @@
+.search{
+    box-sizing: border-box;
+    height:100%;
+    min-width: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #3385ff;
+    color:#fff;
+    border: 1px solid #3385ff;
+    font-size: 20px;
+}
