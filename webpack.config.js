@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry:{
         index:"./src/index.js"
+       // edit:"./src/edit.js"
     },
     output:{
         path:path.resolve(__dirname,"dist"),
@@ -51,7 +52,12 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template:"./src/index.html"
+           
         }),
+      /*   new HtmlWebpackPlugin({
+            template:"./src/edit.html"
+           
+        }), */
         new CleanWebpackPlugin("./dist")
     ],
     mode:"development",

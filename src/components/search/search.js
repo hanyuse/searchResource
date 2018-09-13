@@ -6,6 +6,12 @@ import img from "../../asset/imgs/logo.jpg";
 import Input from "../input/input";
 import SearchButton from "../searchButton/searchButton";
 import ListItem from "../listItem/listItem";
+import AbortController from "abort-controller"
+import {baseUrl} from "../tool/Tool";
+
+const controller = new AbortController();
+const signal = controller.signal;
+
 
 export default class SearchInput extends React.PureComponent{
     constructor(props){
@@ -31,13 +37,20 @@ export default class SearchInput extends React.PureComponent{
         })
         //根据关键字搜索，未搜索到则不出提示框
         if(val&&val.trim()!=""){
-            fetch("https://www.baidu.com",{
-                mode: "no-cors"
+            const url = `${baseUrl}/questions`
+            console.log(url)
+            fetch(url,{
+                mode: "cors",
+                method:"GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type' : 'text/plain'
+                }
             }).then((res)=>{
-                this.setState({
-                    show:true,
-                    hintArray:[{name:"测试数据1",value:"lalalal"},{name:"测试数据2",value:"sssfdfsdafs"}]
-                })
+                return res.text();
+                
+            }).then((data)=>{
+                console.log(data);
             })
         }else{
             this.setState({
