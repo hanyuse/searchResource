@@ -1,0 +1,55 @@
+.container{
+    position: absolute;
+    top:-50px;
+    left: 0;
+    width:100%;
+    height:300px;
+    z-index: 99999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    line-height: 35px;
+    padding:15px;
+    text-align: center;
+}
+
+.file{
+    overflow-y: auto;
+    height: 215px;
+}
+
+.foot{
+    width:100%;
+    padding:10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+
+.container button{
+    padding:6px 15px;
+    background-color: #3385ff;
+    color: #fff;
+    border: 1px solid #3385ff;
+}
+
+.li{
+    text-align: center;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top:15px;
+}
+
+.li span{
+    margin:0px 10px;
+}
+
+.close{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    color: red;
+}

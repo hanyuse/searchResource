@@ -9,6 +9,8 @@
 }
 
 .btn{
-    padding-left: 10px;
-    padding-right: 10px;
+    padding:2px 10px;
+    background-color: #3385ff;
+    color: #fff;
+    border: 1px solid #3385ff;
 }

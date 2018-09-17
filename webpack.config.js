@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry:{
-        index:"./src/index.js"
-       // edit:"./src/edit.js"
+        // index:"./src/index.js"
+       edit:"./src/edit.js"
     },
     output:{
         path:path.resolve(__dirname,"dist"),
@@ -44,20 +44,21 @@ module.exports = {
     },
     devServer:{
         contentBase: path.join(__dirname, "dist"),
+        host: "192.168.31.249",
         hot: true,
         historyApiFallback: true,
         open:true
     },
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
+      /*    new HtmlWebpackPlugin({
             template:"./src/index.html"
            
-        }),
-      /*   new HtmlWebpackPlugin({
+        }), */
+         new HtmlWebpackPlugin({
             template:"./src/edit.html"
            
-        }), */
+        }),
         new CleanWebpackPlugin("./dist")
     ],
     mode:"development",

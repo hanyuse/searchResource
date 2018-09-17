@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    margin: 15px 0;
+}
+.container *{
+    height: 35px;
+    margin-right:20px;
+}
+
+.container input{
+    width:250px;
+}
+
+.container button{
+    padding:0 10px;
+    background-color: #3385ff;
+    color: #fff;
+    border: 1px solid #3385ff;
+}

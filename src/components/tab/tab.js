@@ -1,12 +1,10 @@
 import React from "react";
 import css from "./tab.css";
+import Nav from "../pagination/pagination";
 
 export default class Tab extends React.PureComponent{
     constructor(props){
         super(props);
-        this.state = {
-            arr:[{name:"1n1ihaoma",value:"1我很好啊"},{name:"2nihaoma",value:"2我很好啊"},{name:"3nihaoma",value:"4我很好啊"}]
-        }
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -14,21 +12,25 @@ export default class Tab extends React.PureComponent{
         e.preventDefault();
         const obj = e.target;
         const index = obj.getAttribute("idx");
-        const {name,value} = this.state.arr[index];
-        this.props.click(index,name,value);
+        const {question,answer,id} = this.props.arr[index];
+        this.props.click(index,question,answer,id);
     }
     render(){
-        let body = this.state.arr.map((obj,index)=>{
+        let body = this.props.arr.map((obj,index)=>{
+            let answer = obj.answer;
+            if(answer){
+                answer = answer.length>15?answer.substr(0,15)+"..." : answer;
+            }
             return (
                 <tr key={index}>
                     <td>
                         <div>{index+1}</div>
                     </td>
                     <td>
-                        <div>{obj.name}</div>
+                        <div>{obj.question}</div>
                     </td>
                     <td>
-                        <div>{obj.value}</div>
+                        <div>{answer}</div>
                     </td>
                     <td>
                         <button idx={index} className={css.btn} onClick={this.handleClick}>编辑</button>
@@ -43,13 +45,13 @@ export default class Tab extends React.PureComponent{
                         <td style={{width:"10%"}}>
                             序号
                         </td>
-                        <td style={{width:"20%"}}>
+                        <td style={{width:"25%"}}>
                             问题
                         </td>
-                        <td style={{width:"60%"}}>
+                        <td style={{width:"50%"}}>
                             答案
                         </td>
-                        <td  style={{width:"10%"}}>
+                        <td  style={{width:"15%"}}>
                             操作
                         </td>
                     </tr>
@@ -57,6 +59,13 @@ export default class Tab extends React.PureComponent{
                 <tbody>
                     {body}
                 </tbody>
+                <tfoot style={{display:this.props.states.foot?"":"none"}}>
+                    <tr>
+                        <td colSpan="4">
+                            <Nav states={this.props.states} handler={this.props.handler}/>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         )
     }

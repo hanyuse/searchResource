@@ -1,0 +1,18 @@
+.container{
+    width:100%;
+    padding:10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn button,.txt{
+    padding:5px 15px;
+    background-color: #3385ff;
+    color: #fff;
+    border: 1px solid #3385ff;
+    margin-right: 5px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
